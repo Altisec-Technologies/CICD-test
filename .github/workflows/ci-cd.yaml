@@ -42,7 +42,7 @@ jobs:
 
       # 7. Verify installation (DEBUG step)
       - name: Verify Cortex CLI
-        run: cortex --version
+        run: cortexcli -v
 
       # 8. Login using secret
       - name: Cortex Login
