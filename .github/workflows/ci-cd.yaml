@@ -1,30 +1,38 @@
-name: CI/CD Pipeline
+name: CI/CD with Cortex
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
-  build-test-deploy:
+  build-test-scan:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Use Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
+      # Node.js setup
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Run tests
-      run: npm test
+      - name: Run tests
+        run: npm test
 
-    - name: Build Docker image
-      run: docker build -t demo-cicd-app .
+      # Docker build
+      - name: Build Docker image
+        run: docker build -t demo-cicd-app .
 
-    - name: Run container (demo deployment)
-      run: docker run -d -p 3000:3000 demo-cicd-app
+      # Cortex integration
+      - name: Install Cortex CLI
+        run: curl -sSL https://install.cortex.io | bash
+
+      - name: Cortex login
+        run: cortex login --api-key ${{ secrets.CORTEX_API_KEY }}
+
+      - name: Scan Docker image with Cortex
+        run: cortex scan image demo-cicd-app:latest
