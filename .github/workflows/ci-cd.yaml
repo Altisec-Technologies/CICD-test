@@ -37,7 +37,7 @@ jobs:
         run: |
           crtx_resp=$(curl -s "https://api-atpl-nfr.xdr.in.paloaltonetworks.com/public_api/v1/unified-cli/releases/download-link?os=linux&architecture=amd64" -H "x-xdr-auth-id: 45" -H "Authorization: NrQivSxdJwfgerY61f61cErkGpUA1dAUECToHiU2xsxfCfjiRmDEGraLFh5dHOSTYfsgyzuNSehmS2uKSpzM3i7CAZ3RMWTVfXHR6Jp8kGdgH9jbqKb83kKbhfW5TeLZ") && crtx_url=$(echo $crtx_resp | jq -r ".signed_url") && crtx_file=$(echo $crtx_resp | jq -r ".file_name") && curl -o $crtx_file $crtx_url 
           chmod +x cortexcli
-          curl -k -u 45::NrQivSxdJwfgerY61f61cErkGpUA1dAUECToHiU2xsxfCfjiRmDEGraLFh5dHOSTYfsgyzuNSehmS2uKSpzM3i7CAZ3RMWTVfXHR6Jp8kGdgH9jbqKb83kKbhfW5TeLZ --output ./cortexcli $CORTEX_FQDN/api/v2/remote-li/{version}/{platform}/artifacts
+          curl -k -u 45::NrQivSxdJwfgerY61f61cErkGpUA1dAUECToHiU2xsxfCfjiRmDEGraLFh5dHOSTYfsgyzuNSehmS2uKSpzM3i7CAZ3RMWTVfXHR6Jp8kGdgH9jbqKb83kKbhfW5TeLZ --output ./cortexcli https://api-atpl-nfr.xdr.in.paloaltonetworks.com/api/v2/remote-li/{version}/{platform}/artifacts
           chmod +x cortexcli
 
       # 7. Verify installation (DEBUG step)
