@@ -32,7 +32,7 @@ jobs:
         run: curl -sSL https://install.cortex.io | bash
 
       - name: Cortex login
-        run: cortex login --api-key yaYa769yCwNA8tkDrliBJ7HPgXA9HoZ4JXUF7E9zJbZ3k1pAF73e3YNznPh3oT8GhbwVGvQ8049pS09gj8WMlvPOcA695VRPazAjM8ZJqL0809kjgjCmMdlvkFbAfG1I
+        run: cortex login --api-key ${{yaYa769yCwNA8tkDrliBJ7HPgXA9HoZ4JXUF7E9zJbZ3k1pAF73e3YNznPh3oT8GhbwVGvQ8049pS09gj8WMlvPOcA695VRPazAjM8ZJqL0809kjgjCmMdlvkFbAfG1I}}
 
       - name: Scan Docker image with Cortex
         run: cortex scan image demo-cicd-app:latest
