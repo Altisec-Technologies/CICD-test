@@ -35,10 +35,7 @@ jobs:
       # 6. Install Cortex CLI (FIXED)
       - name: Install Cortex CLI
         run: |
-          curl -L https://install.cortex.io -o cortex-install.sh
-          chmod +x cortex-install.sh
-          ./cortex-install.sh
-          echo "$HOME/.cortex/bin" >> $GITHUB_PATH
+          Run curl -k -u 44::YDawPJCT9qusOyBaxPErEq7poNc1DsYrSfKvsQ15KdncvO4xPDejB8epsaDftuRTFcv3P9NobeBT2TAX4DshMNC4qqoRGYIE3KrXMUpvv2mAKeIe3pyokdjRMTDtFFl4 --output ./cortexcli $CORTEX_FQDN/api/v2/remote-li/{version}/{platform}/artifacts
 
       # 7. Verify installation (DEBUG step)
       - name: Verify Cortex CLI
