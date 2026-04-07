@@ -48,7 +48,7 @@ jobs:
 
       # 8. Login using secret
       - name: Cortex Login
-        run: cortex login --api-key d3r1fsJinwU4va3ydeixVGnuB328dlDgr5w11NHJbT936qsu56qU4kF9Zboa6MRRVI9qGeFQXbss10LPI0DnHP5ehZQyV3f7JikD933FdeI7vi6WIBzlmegopjbXqHnA
+        run: ./cortexcli --api-base-url https://api-atpl-nfr.xdr.in.paloaltonetworks.com --api-key NrQivSxdJwfgerY61f61cErkGpUA1dAUECToHiU2xsxfCfjiRmDEGraLFh5dHOSTYfsgyzuNSehmS2uKSpzM3i7CAZ3RMWTVfXHR6Jp8kGdgH9jbqKb83kKbhfW5TeLZ --auth-id 45 --upload-mode=true --repo-id Altisec-Technologies/CICD-test --branch main
 
       # 9. Scan image
       - name: Scan Docker image with Cortex
