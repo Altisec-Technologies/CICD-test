@@ -56,4 +56,4 @@ jobs:
       
       # 10. Scan Code
       - name: Scan Code
-        run: cortexcli --api-base-url https://api-atpl-nfr.xdr.in.paloaltonetworks.com --api-key NrQivSxdJwfgerY61f61cErkGpUA1dAUECToHiU2xsxfCfjiRmDEGraLFh5dHOSTYfsgyzuNSehmS2uKSpzM3i7CAZ3RMWTVfXHR6Jp8kGdgH9jbqKb83kKbhfW5TeLZ --api-key-id 45 code scan -h
+        run: ./cortexcli --api-base-url https://api-atpl-nfr.xdr.in.paloaltonetworks.com --api-key NrQivSxdJwfgerY61f61cErkGpUA1dAUECToHiU2xsxfCfjiRmDEGraLFh5dHOSTYfsgyzuNSehmS2uKSpzM3i7CAZ3RMWTVfXHR6Jp8kGdgH9jbqKb83kKbhfW5TeLZ --api-key-id 45 code scan -h
