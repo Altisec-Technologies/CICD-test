@@ -35,7 +35,10 @@ jobs:
       # 6. Install Cortex CLI (FIXED)
       - name: Install Cortex CLI
         run: |
-          Run curl -k -u 44::YDawPJCT9qusOyBaxPErEq7poNc1DsYrSfKvsQ15KdncvO4xPDejB8epsaDftuRTFcv3P9NobeBT2TAX4DshMNC4qqoRGYIE3KrXMUpvv2mAKeIe3pyokdjRMTDtFFl4 --output ./cortexcli $CORTEX_FQDN/api/v2/remote-li/{version}/{platform}/artifacts
+          crtx_resp=$(curl -s "https://api-atpl-nfr.xdr.in.paloaltonetworks.com/public_api/v1/unified-cli/releases/download-link?os=linux&architecture=amd64" -H "x-xdr-auth-id: 45" -H "Authorization: NrQivSxdJwfgerY61f61cErkGpUA1dAUECToHiU2xsxfCfjiRmDEGraLFh5dHOSTYfsgyzuNSehmS2uKSpzM3i7CAZ3RMWTVfXHR6Jp8kGdgH9jbqKb83kKbhfW5TeLZ") && crtx_url=$(echo $crtx_resp | jq -r ".signed_url") && crtx_file=$(echo $crtx_resp | jq -r ".file_name") && curl -o $crtx_file $crtx_url 
+          chmod +x cortexcli
+          Run curl -k -u 45::NrQivSxdJwfgerY61f61cErkGpUA1dAUECToHiU2xsxfCfjiRmDEGraLFh5dHOSTYfsgyzuNSehmS2uKSpzM3i7CAZ3RMWTVfXHR6Jp8kGdgH9jbqKb83kKbhfW5TeLZ --output ./cortexcli $CORTEX_FQDN/api/v2/remote-li/{version}/{platform}/artifacts
+          chmod +x cortexcli
 
       # 7. Verify installation (DEBUG step)
       - name: Verify Cortex CLI
