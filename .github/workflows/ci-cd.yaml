@@ -10,17 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout code
+      # 1. Checkout
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2. Setup Node.js
+      # 2. Node setup
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      # 3. Install dependencies
+      # 3. Install deps
       - name: Install dependencies
         run: npm install
 
@@ -28,18 +28,26 @@ jobs:
       - name: Run tests
         run: npm test
 
-      # 5. Build Docker image (simple & reliable)
+      # 5. Build Docker image
       - name: Build Docker image
         run: docker build -t demo-cicd-app:latest .
 
-      # 6. Install Cortex CLI
+      # 6. Install Cortex CLI (FIXED)
       - name: Install Cortex CLI
-        run: curl -sSL https://install.cortex.io | bash
+        run: |
+          curl -L https://install.cortex.io -o cortex-install.sh
+          chmod +x cortex-install.sh
+          ./cortex-install.sh
+          echo "$HOME/.cortex/bin" >> $GITHUB_PATH
 
-      # 7. Authenticate with Cortex (using GitHub Secret)
+      # 7. Verify installation (DEBUG step)
+      - name: Verify Cortex CLI
+        run: cortex --version
+
+      # 8. Login using secret
       - name: Cortex Login
-        run: cortex login --api-key ${{ secrets.CORTEX_CLOUD_API_KEY }}
+        run: cortex login --api-key ${{ secrets.CORTEX_API_KEY }}
 
-      # 8. Scan Docker image
+      # 9. Scan image
       - name: Scan Docker image with Cortex
         run: cortex scan image demo-cicd-app:latest
