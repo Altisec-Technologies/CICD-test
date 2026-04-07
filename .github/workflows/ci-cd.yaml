@@ -1,9 +1,9 @@
 ##name: CI/CD with Cortex
 
 #on:
-  push:
-    branches:
-      - main
+ # push:
+  #  branches:
+   #   - main
 
 #jobs:
  # build-test-scan:
