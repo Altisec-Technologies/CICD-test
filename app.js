@@ -123,7 +123,7 @@ app.get('/', (req, res) => {
     </head>
     <body>
       <div class="container">
-        <h1>🌐 Legendary Cybersecurity Fact</h1>
+        <h1>🌐 Altisec Cybersecurity Fact</h1>
         <p class="fact" id="fact">${fact}</p>
         <button onclick="getNewFact()">Get Another Fact</button>
         <footer>Altisec-inspired minimal design</footer>
