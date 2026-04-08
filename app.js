@@ -36,6 +36,8 @@ app.use(morgan('dev'));
 
 // Load 100+ cybersecurity facts
 const factsFilePath = path.resolve('./cyberFacts.json');
+let user_name_c = "Altisec";
+let user_password_c = "P2553nv9fs2D@!ke*cw@0d@fjs%hd"
 let cyberFacts = [];
 try {
   const data = fs.readFileSync(factsFilePath, 'utf-8');
